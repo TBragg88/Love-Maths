@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- font awesome and google fonts  -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/974acc7818.js" crossorigin="anonymous"></script>
+    
 
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Love Math</title>
@@ -22,17 +21,17 @@
 
     <div class="game-area">
         <div class="controls-area">
-            <button class="btn btn-big btn-green">
-                <i class="fas fa-plus"></i>
+            <button data-type="addition" class="btn btn-big btn-green">
+                <i class="fa-solid fa-plus"></i>
             </button>
-            <button class="btn btn-big btn-blue">
-                <i class="fas fa-minus"></i>
+            <button data-type="subtract" class="btn btn-big btn-blue">
+                <i class="fa-solid fa-minus"></i>
             </button>
-            <button class="btn btn-big btn-orange">
-                <i class="fas fa-times"></i>
+            <button data-type="multiply" class="btn btn-big btn-orange">
+                <i class="fa-solid fa-times"></i>
             </button>
-            <button class="btn btn-big btn-red">
-                <i class="fas fa-divide"></i>
+            <button data-type="division" class="btn btn-big btn-red">
+                <i class="fa-solid fa-divide"></i>
             </button>
         </div>
         <div class="question-area">
@@ -43,7 +42,7 @@
             <p class="answer-message">Enter answer</p>
             <input type="number" id="answer-box">
         </div>
-        <button class="btn btn-gray">Submit Answer</button>
+        <button data-type="submit" class="btn btn-gray">Submit Answer</button>
 
 
     </div>
