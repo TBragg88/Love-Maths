@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked  Submit!");
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -31,20 +31,62 @@ function runGame(gameType) {
         throw `unknown game type: ${gameType} Aborting!`;
     }
 }
+/**
+ * Checks the answer against the first element in
+ * the returned calculateCorrectAnswer array
+ */
+function checkAnswer() {
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calulateCorrectrAnswer();
+    let isCorrect = userAnswer === calculatedAnswer[0];
 
-function checkAnswer() {}
+    if (isCorrect) {
+        // alert("Hey! You got it right! :D.");
+        incrementScore();
+    } else {
+        // alert(
+        //     ` Awwww you answered ${userAnswer}. the correct answer was ${calculatedAnswer[0]}`
+        // );
+        incrementWrongAnswer()
+    }
 
-function calulateCorrectrAnswer() {}
+    runGame(calculatedAnswer[1]);
+}
 
-function incrementScore() {}
+/**
+ * Gets the orperands and the operator
+ * directly from the dom and returns the correct answer.
+ */
+function calulateCorrectrAnswer() {
+    let operand1 = parseInt(document.getElementById("operand1").textContent);
+    let operand2 = parseInt(document.getElementById("operand2").textContent);
+    let operator = document.getElementById("operator").textContent;
 
-function incrementWrongAnswer() {}
+    if ((operator = "+")) {
+        return [operand1 + operand2, "addition"];
+    } else {
+        alert(`Unimplemented operator ${operator}`);
+        throw `Unimplemented operator ${operator}. Aborting!`;
+    }
+}
+
+/**
+ * gets the current score from the DOM and incremenets
+ */
+function incrementScore() {
+    let oldScore = parseInt(document.getElementById("score").textContent);
+    document.getElementById("score").textContent = ++oldScore;
+}
+
+function incrementWrongAnswer() {
+    let oldScore = parseInt(document.getElementById("incorrect").textContent);
+    document.getElementById("incorrect").textContent = ++oldScore;
+}
 
 function displayAdditionQuestion(operand1, operand2) {
     document.getElementById("operand1").textContent = operand1;
     document.getElementById("operand2").textContent = operand2;
     document.getElementById("operator").textContent = "+";
-    
 }
 
 function displaySubtractQuestion() {}
